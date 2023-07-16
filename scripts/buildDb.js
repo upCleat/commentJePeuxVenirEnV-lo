@@ -1,7 +1,8 @@
 const fs = require('fs')
 const path = require('path')
 const { XMLParser } = require('fast-xml-parser')
-
+const xmldom = require('@xmldom/xmldom')
+const tj = require('@tmcw/togeojson')
 const inDevelopmentMode = process.env.Node_ENV === 'development'
 const config = require('../public/config.json')
 const passagePoints = require('../public/passagepoint.json')
@@ -73,10 +74,25 @@ const files = fs.readdirSync(dirpath)
 files.forEach((nomfichier) => {
   if (path.extname(nomfichier) === '.gpx') {
     const pathFileGpx = path.join(dirpath, nomfichier)
+    let nomfichierwoex = path.parse(pathFileGpx).name
+    const pathFileGeoJson = path.join(dirpath, `${nomfichierwoex}.json`)
+
     let currIndex = { ...index }
     // on creer l'index
     // parse le sfichier
     let data = fs.readFileSync(pathFileGpx, { encoding: 'utf8', flag: 'r' })
+
+    let kml = new xmldom.DOMParser().parseFromString(
+      fs.readFileSync(pathFileGpx, 'utf8'),
+      'text/xml'
+    )
+
+    const converted = tj.gpx(kml)
+    fs.writeFileSync(pathFileGeoJson, JSON.stringify(converted, null, 0), {
+      encoding: 'utf8',
+      flag: 'w',
+      mode: 0o666
+    })
 
     let jObj = parser.parse(data)
 
