@@ -1,0 +1,10 @@
+{
+  "radius": 150,
+  "points": [
+    { "coord": [46.32328, -0.45927], "title": "bas de la breche", "alt": "msgalt" },
+    { "coord": [46.32528, -0.46335], "title": "place des halles", "alt": "msgalt" },
+    { "coord": [46.33002, -0.45966], "title": "place denfert rochereau", "alt": "msgalt" },
+    { "coord": [46.3351, -0.45734], "title": "stade espinassou", "alt": "msgalt" },
+    { "coord": [46.33658, -0.46365], "title": "bas de la rue du vivier", "alt": "msgalt" }
+  ]
+}
