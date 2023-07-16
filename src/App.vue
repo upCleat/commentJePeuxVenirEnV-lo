@@ -10,7 +10,7 @@ import HelloWorld from './components/HelloWorld.vue'
       <HelloWorld msg="Comment venir en vélo" />
       <nav>
         <RouterLink to="/">Carte</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/about">A propos</RouterLink>
       </nav>
     </div>
   </header>
