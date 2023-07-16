@@ -30,7 +30,7 @@ export default {
     },
     display(value) {
       this.map[value].gpx.forEach((filegpx) => {
-        this.getGpxData(`/gpx/${filegpx}`)
+        this.getGpxData(`./gpx/${filegpx}`)
       })
     },
     styleFunction(value) {
@@ -64,14 +64,14 @@ export default {
       return {}
     },
     async getData() {
-      const res = await fetch('/data.json')
+      const res = await fetch('./data.json')
       if (res.status === 200) {
         const finalRes = await res.json()
         this.map = finalRes
       }
     },
     async getConfig() {
-      const res = await fetch('/config.json')
+      const res = await fetch('./config.json')
       if (res.status === 200) {
         const finalRes = await res.json()
         this.config = finalRes
